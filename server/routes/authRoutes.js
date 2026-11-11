@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { register, login, me, setAvailability, updateProfile, requestPasswordReset, resetPassword } from '../controllers/authController.js';
+import { protect, allowRoles } from '../middleware/auth.js';
+const router = Router();
+router.post('/register', register); router.post('/login', login); router.get('/me', protect, me);
+router.post('/forgot-password', requestPasswordReset);
+router.post('/reset-password', resetPassword);
+router.patch('/availability', protect, allowRoles('technician'), setAvailability);
+router.patch('/profile', protect, updateProfile);
+export default router;

@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build output
+dist/
+client/dist/
+client/dist-ssr/
+client/.vite/
+
+# Environment files — never commit secrets
+.env
+.env.local
+.env.production
+server/.env
+client/.env
+client/.env.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# Coverage
+coverage/
