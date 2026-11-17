@@ -25,10 +25,11 @@ export function AuthProvider({ children }) {
     setUser(data.user);
     return data.user;
   };
-  const register = async payload => {
+  const register = async (payload, rememberMe = false) => {
     const { data } = await api.post('/auth/register', payload);
     localStorage.removeItem('fixflow_token');
-    sessionStorage.setItem('fixflow_token', data.token);
+    sessionStorage.removeItem('fixflow_token');
+    (rememberMe ? localStorage : sessionStorage).setItem('fixflow_token', data.token);
     setUser(data.user);
     return data.user;
   };

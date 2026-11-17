@@ -33,7 +33,9 @@ A full-stack MERN application for managing workplace maintenance requests, asset
 
 ### Prerequisites
 - Node.js >= 18
-- MongoDB running locally on port 27017
+- Optional: a local MongoDB instance on port 27017
+
+When `MONGO_URI` is not set, the backend automatically starts an in-memory MongoDB instance for local development, so the app can run without extra database setup.
 
 ### 1. Clone the repo
 ```bash
@@ -48,7 +50,7 @@ npm install
 node server.js
 ```
 
-Create `server/.env`:
+If you want to use a local MongoDB instead, create `server/.env`:
 ```
 MONGO_URI=mongodb://127.0.0.1:27017/fixflow
 JWT_SECRET=your_super_secret_key_here

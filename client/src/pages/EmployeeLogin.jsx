@@ -25,7 +25,7 @@ export default function EmployeeLogin() {
     try {
       const user = isLogin
         ? await login(form.identifier, form.password, rememberMe, 'employee')
-        : await register(form);
+        : await register(form, rememberMe);
       if (user.role !== 'employee') {
         setError('This sign-in is for employees. Choose the correct workspace.');
         return;

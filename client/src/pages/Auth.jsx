@@ -24,7 +24,7 @@ export default function Auth({ mode = 'login', requiredRole = null }) {
     try {
       const authenticatedUser = isLogin
         ? await login(form.identifier, form.password, rememberMe, requiredRole)
-        : await register(form);
+        : await register(form, rememberMe);
       if (requiredRole && authenticatedUser.role !== requiredRole) {
         logout();
         setError('This sign-in is for administrators. Choose the correct workspace to continue.');
