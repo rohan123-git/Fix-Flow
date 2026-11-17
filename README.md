@@ -71,6 +71,24 @@ cd server
 node scripts/seedDemoUsers.js
 ```
 
+## Public deployment (Vercel + Render)
+
+The repository includes a Render Blueprint in `render.yaml` for the API and a
+Vercel rewrite in `client/vercel.json` for client-side routes.
+
+1. Deploy the `client` directory from the GitHub repository to Vercel. Set
+   `VITE_API_URL` to the Render API URL followed by `/api`, for example
+   `https://fixflow-api.onrender.com/api`.
+2. Deploy the repository's `render.yaml` as a Blueprint on Render. Set
+   `MONGO_URI` to the MongoDB Atlas connection string. Render generates
+   `JWT_SECRET`; set `CLIENT_URL` to the Vercel site origin (without a path).
+3. If the API was deployed before the Vercel site, update `CLIENT_URL` in the
+   Render service after Vercel assigns the site's URL, then redeploy the API.
+4. Confirm the API responds at `/api/health`, then open the Vercel site.
+
+Keep database connection strings and other secrets in the hosting providers'
+environment-variable settings; never commit them to the repository.
+
 ---
 
 ## Demo Accounts
